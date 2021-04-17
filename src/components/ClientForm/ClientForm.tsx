@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Grid, Button } from "@material-ui/core";
 import FormikInput from "../../components/FormikElements/FormikInput";
+import "./styles.scss";
 
 const initialValues = {
   name: "",
@@ -30,8 +31,11 @@ const ClientForm = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Signup</h1>
+    <div className="client-form">
+      <div className="center">
+        <h1>Regístrate.</h1>
+        <h2>Conoce todas nuestras promociones.</h2>
+      </div>
       <Formik
         initialValues={initialValues}
         // validationSchema={ClientFormSchema}
@@ -40,20 +44,20 @@ const ClientForm = () => {
       >
         {(formik) => {
           return (
-            <Form className="general-form">
+            <Form>
               {/* MAIN FORM */}
               <Grid container className="main-form-container" spacing={3}>
-                <Grid item lg={12} className="top">
+                <Grid item xs={12}>
                   <FormikInput name="name" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
                 </Grid>
-                <Grid item lg={12} className="top">
-                  <FormikInput name="email" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
+                <Grid item xs={12}>
+                  <FormikInput name="email" placeholder="Email" validateOnClick={true} disabled={loading} />
                 </Grid>
-                <Grid item lg={12} className="top">
-                  <FormikInput name="tarjetahabiente" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
+                <Grid item xs={12}>
+                  <FormikInput name="tarjetahabiente" placeholder="¿Eres tarjetabiente?" validateOnClick={true} disabled={loading} />
                 </Grid>
-                <Grid item md={6} xs={12}>
-                  <Button type="submit" className="btn-primary" disabled={loading}>
+                <Grid item xs={12}>
+                  <Button type="submit" variant="contained" color="primary" disabled={loading}>
                     Registrar mis datos
                   </Button>
                 </Grid>

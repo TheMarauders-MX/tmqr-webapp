@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: wheat;
+  background-color: white;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -24,4 +24,8 @@ body {
       padding-top: 20px;
     }
   }
+}
+
+.center {
+  text-align: center;
 }
