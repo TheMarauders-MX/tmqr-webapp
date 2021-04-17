@@ -3,6 +3,8 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Grid, Button } from "@material-ui/core";
 import FormikInput from "../../components/FormikElements/FormikInput";
+import axios from "axios";
+
 import "./styles.scss";
 
 const initialValues = {
@@ -26,13 +28,23 @@ const ClientForm = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmitButton = useCallback(async (info: any) => {
-    console.log("hola");
     console.log(info);
+
+    axios.post(`${process.env.REACT_APP_API_URL}`, { info }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+
+    // try {
+    //   await postLeads(info);
+    // } catch (error) {
+    //   console.log("error: ", error);
+    // }
   }, []);
 
   return (
     <div className="client-form">
-      <div className="center">
+      <div className="center header">
         <h1>Regístrate.</h1>
         <h2>Conoce todas nuestras promociones.</h2>
       </div>

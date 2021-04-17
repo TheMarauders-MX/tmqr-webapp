@@ -1,0 +1,16 @@
+@import "@theme/variables", "@theme/colors";
+
+.MuiToolbar-root {
+  h6 {
+    font-size: 1.7rem;
+  }
+  img {
+    margin: 0 auto;
+    width: 60%;
+  }
+}
+
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: $color-secondary !important;
+}
