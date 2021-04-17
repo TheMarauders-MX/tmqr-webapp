@@ -1,0 +1,27 @@
+html,
+body {
+  background-color: wheat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Global styles */
+.container {
+  width: 100%;
+  max-width: 1480px;
+  padding: 0 54px;
+  margin: 0 auto;
+
+  &.component-mainsection {
+    padding-top: 45px;
+  }
+
+  @media (max-width: 600px) {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+
+    &.component-mainsection {
+      padding-top: 20px;
+    }
+  }
+}
