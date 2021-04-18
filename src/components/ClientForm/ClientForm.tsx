@@ -6,39 +6,46 @@ import FormikInput from "../../components/FormikElements/FormikInput";
 import axios from "axios";
 
 import "./styles.scss";
+import { useHistory } from "react-router-dom";
+import { postClient } from "@services/client.service";
 
 const initialValues = {
-  name: "",
+  phone: "",
   email: "",
-  tarjetahabiente: "",
+  already_user: "",
 };
 
 const ClientFormSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Este campo es obligatorio")
-    .matches(/^[a-zA-Z\u00C0-\u024F][a-zA-Z\u00C0-\u024F\s]*$/, { message: "El nombre ingresado solo puede contener letras" })
-    .max(50, "El nombre ingresado no puede exceder 50 caracteres"),
+  phone: Yup.string().required("Este campo es obligatorio").max(10, "El nombre ingresado no puede exceder 10 caracteres"),
   email: Yup.string().required("Este campo es obligatorio").email("El correo electrónico no es válido"),
-  tarjetahabiente: Yup.string().required("Este campo es obligatorio"),
+  already_user: Yup.string().required("Este campo es obligatorio"),
 });
 
 const ClientForm = () => {
+  const history = useHistory();
   const [success, setSuccess] = useState(0);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const onSubmitButton = useCallback(async (info: any) => {
-    console.log(info);
-
-    // axios.post(`${process.env.REACT_APP_API_URL}/register`, { info }).then((res) => {
-    //   console.log(res);
-    //   console.log(res.data);
-    // });
-
+    //console.log(info);
+    //let data = JSON.stringify({ info });
+    //let data = { phone: info.phone, email: info.email, already_user: info.already_user };
+    let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: new Boolean(info.already_user) });
+    console.log(data);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/register`, data, { headers: { "Content-Type": "application/json" } })
+      .catch((error) => {
+        console.log(error);
+      })
+      .then((response) => {
+        console.log(response);
+      });
+    //console.log(response.response.data);
     // try {
-    //   await postLeads(info);
-    // } catch (error) {
-    //   console.log("error: ", error);
+    //   await postClient(data);
+    // } catch {
+    //   console.log(error);
     // }
   }, []);
 
@@ -60,8 +67,8 @@ const ClientForm = () => {
               {/* MAIN FORM */}
               <Grid container className="main-form-container" spacing={3}>
                 <Grid item xs={12}>
-                  <FormLabel component="legend">Ingresa tu nombre completo: </FormLabel>
-                  <FormikInput name="name" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
+                  <FormLabel component="legend">Ingresa tu teléfono (10 digitos): </FormLabel>
+                  <FormikInput name="phone" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
                 </Grid>
                 <Grid item xs={12}>
                   <FormLabel component="legend">Ingresa tu email: </FormLabel>
@@ -71,11 +78,11 @@ const ClientForm = () => {
                   <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
                   <ul className="input-ul">
                     <li>
-                      <Field type="radio" name="tarjetahabiente" value="true" />
+                      <Field type="radio" name="already_user" value={true} />
                       <label htmlFor="si">Sí</label>
                     </li>
                     <li>
-                      <Field type="radio" name="tarjetahabiente" value="false" />
+                      <Field type="radio" name="already_user" value={false} />
                       <label htmlFor="no">No</label>
                     </li>
                   </ul>
