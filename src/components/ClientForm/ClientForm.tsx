@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, FormLabel } from "@material-ui/core";
 import FormikInput from "../../components/FormikElements/FormikInput";
 import axios from "axios";
 
@@ -30,10 +30,10 @@ const ClientForm = () => {
   const onSubmitButton = useCallback(async (info: any) => {
     console.log(info);
 
-    axios.post(`${process.env.REACT_APP_API_URL}`, { info }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    // axios.post(`${process.env.REACT_APP_API_URL}/register`, { info }).then((res) => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // });
 
     // try {
     //   await postLeads(info);
@@ -45,8 +45,8 @@ const ClientForm = () => {
   return (
     <div className="client-form">
       <div className="center header">
-        <h1>Regístrate.</h1>
-        <h2>Conoce todas nuestras promociones.</h2>
+        <h2>Regístrate.</h2>
+        <h5>Conoce todas nuestras promociones.</h5>
       </div>
       <Formik
         initialValues={initialValues}
@@ -60,13 +60,25 @@ const ClientForm = () => {
               {/* MAIN FORM */}
               <Grid container className="main-form-container" spacing={3}>
                 <Grid item xs={12}>
+                  <FormLabel component="legend">Ingresa tu nombre completo: </FormLabel>
                   <FormikInput name="name" placeholder="Nombre completo" validateOnClick={true} disabled={loading} />
                 </Grid>
                 <Grid item xs={12}>
+                  <FormLabel component="legend">Ingresa tu email: </FormLabel>
                   <FormikInput name="email" placeholder="Email" validateOnClick={true} disabled={loading} />
                 </Grid>
                 <Grid item xs={12}>
-                  <FormikInput name="tarjetahabiente" placeholder="¿Eres tarjetabiente?" validateOnClick={true} disabled={loading} />
+                  <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
+                  <ul className="input-ul">
+                    <li>
+                      <Field type="radio" name="tarjetahabiente" value="true" />
+                      <label htmlFor="si">Sí</label>
+                    </li>
+                    <li>
+                      <Field type="radio" name="tarjetahabiente" value="false" />
+                      <label htmlFor="no">No</label>
+                    </li>
+                  </ul>
                 </Grid>
                 <Grid item xs={12}>
                   <Button type="submit" variant="contained" color="primary" disabled={loading}>

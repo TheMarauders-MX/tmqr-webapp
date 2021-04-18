@@ -4,10 +4,10 @@ import Navbar from "../../components/Shared/Navbar/Navbar";
 
 const HomeScreen = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <ClientForm />
-    </div>
+    </>
   );
 };
 
