@@ -1,0 +1,6 @@
+@import "./colors";
+
+button {
+  background-color: $color-secondary !important;
+  color: $color-primary;
+}
