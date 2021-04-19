@@ -1,0 +1,20 @@
+@import "@theme/variables", "@theme/colors";
+
+.outer-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: $spacing;
+  padding-right: $spacing;
+  margin-top: $spacing;
+}
+
+.inner-container {
+  background-color: whitesmoke;
+  padding: $spacing;
+  img {
+    width: 80%;
+  }
+  b {
+    color: $color-secondary;
+  }
+}
