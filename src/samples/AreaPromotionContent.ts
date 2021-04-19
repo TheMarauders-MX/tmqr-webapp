@@ -15,4 +15,11 @@ export const sampleAreasJSON : AreaPromotionContent[] = [
       area: "Línea Blanca",
       discount: 40,
     },
+    {
+      key: 3, 
+      image: "https://assetspwa.liverpool.com.mx/assets/digital/home/img/abril21/bpromo01d_190421com.jpg",
+      altImg: "Cómputo",
+      area: "Cómputo",
+      discount: 10
+    }
 ];

@@ -1,0 +1,11 @@
+@import "@theme/variables", "@theme/colors";
+
+footer {
+  text-align: center;
+  padding: $spacing;
+  background-color: $color-gray;
+  color: $color-primary;
+  p {
+    margin-bottom: $spacing/2;
+  }
+}
