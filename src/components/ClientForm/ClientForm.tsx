@@ -7,7 +7,6 @@ import axios from "axios";
 
 import "./styles.scss";
 import { useHistory } from "react-router-dom";
-import { postClient } from "@services/client.service";
 
 const initialValues = {
   phone: "",
@@ -28,11 +27,7 @@ const ClientForm = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmitButton = useCallback(async (info: any) => {
-    //console.log(info);
-    //let data = JSON.stringify({ info });
-    //let data = { phone: info.phone, email: info.email, already_user: info.already_user };
     let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: new Boolean(info.already_user) });
-    console.log(data);
     axios
       .post(`${process.env.REACT_APP_API_URL}/register`, data, { headers: { "Content-Type": "application/json" } })
       .catch((error) => {
@@ -41,12 +36,7 @@ const ClientForm = () => {
       .then((response) => {
         console.log(response);
       });
-    //console.log(response.response.data);
-    // try {
-    //   await postClient(data);
-    // } catch {
-    //   console.log(error);
-    // }
+    history.push("/home");
   }, []);
 
   return (
