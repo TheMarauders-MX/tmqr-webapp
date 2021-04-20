@@ -1,0 +1,8 @@
+@import "@theme/variables", "@theme/colors";
+
+.MuiDrawer-modal {
+  .header {
+    padding: 22px;
+    color: $color-secondary;
+  }
+}

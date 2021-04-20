@@ -7,5 +7,10 @@ footer {
   color: $color-primary;
   p {
     margin-bottom: $spacing/2;
+    font-size: $font-size-xs;
+  }
+  div {
+    margin-bottom: $spacing;
+    margin-top: $spacing;
   }
 }

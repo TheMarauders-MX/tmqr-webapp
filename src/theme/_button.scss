@@ -4,3 +4,13 @@ button {
   background-color: $color-secondary !important;
   color: $color-primary;
 }
+
+.secondary {
+  background-color: $color-gray !important;
+  color: $color-primary;
+  border: 1px solid $color-primary !important;
+  padding: $spacing/2;
+  border-radius: 1.5px;
+  width: 90%;
+  font-size: $font-size-p;
+}

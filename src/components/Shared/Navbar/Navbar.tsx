@@ -1,16 +1,33 @@
 import React from "react";
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
+
 import "./styles.scss";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <img src="images/logo.png" />
-          {/* <Typography variant="h6">Liverpool</Typography> */}
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
+            <MenuIcon />
+          </IconButton>
+          <img src="images/logo.png" alt="Liverpool logo" />
         </Toolbar>
       </AppBar>
+      <Sidebar isOpen={open} onClose={handleDrawerClose} />
     </>
   );
 };
