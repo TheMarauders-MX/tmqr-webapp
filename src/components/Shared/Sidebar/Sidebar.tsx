@@ -35,7 +35,7 @@ const Sidebar = (props: SidebarProps) => {
         </div>
         <Divider />
         <List>
-          <ListItem button key={"Inicio"} onClick={() => redirect("/")}>
+          <ListItem button key={"Inicio"} onClick={props.onClose}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -54,7 +54,6 @@ const Sidebar = (props: SidebarProps) => {
             <ListItemText primary={"Escanea"} />
           </ListItem>
           <Divider />
-
           <ListItem button key={"Departamentos"} onClick={handleExpandMenu}>
             <ListItemIcon>
               <NoteIcon />
