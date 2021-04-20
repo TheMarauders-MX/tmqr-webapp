@@ -78,7 +78,7 @@ const ClientForm = () => {
                   </ul>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary" disabled={loading}>
+                  <Button type="submit" variant="contained" color="primary" disabled={loading} data-tut="second__step">
                     Registrar mis datos
                   </Button>
                 </Grid>
