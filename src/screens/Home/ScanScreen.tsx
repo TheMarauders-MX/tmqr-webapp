@@ -9,13 +9,10 @@ import { Button } from "@material-ui/core";
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
   //const [imgSrc, setImgSrc] = useState<string | null>(null);
-
-  const [videoWidth, setVideoWidth] = useState(960);
-  const [videoHeight, setVideoHeight] = useState(640);
   const [model, setModel] = useState<any>(null);
 
   const videoConstraints = {
-    height: 736,
+    height: 400,
     width: 414,
     maxWidth: "50vh",
     facingMode: "environment",
@@ -54,10 +51,6 @@ const ScanScreen = () => {
   return (
     <div>
       <Navbar />
-
-      {/* <div style={{ position: "absolute", top: "400px" }}>
-        <canvas id="myCanvas" width={videoWidth} height={videoHeight} style={{ backgroundColor: "transparent" }} />
-      </div> */}
       <div className="center">
         <Webcam
           audio={false}
