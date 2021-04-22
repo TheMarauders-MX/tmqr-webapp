@@ -5,6 +5,7 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import Navbar from "@components/Shared/Navbar/Navbar";
 import { Button } from "@material-ui/core";
+import Footer from "@components/Shared/Footer/Footer";
 
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
@@ -15,7 +16,7 @@ const ScanScreen = () => {
   const [model, setModel] = useState<any>(null);
 
   const videoConstraints = {
-    height: 736,
+    height: 400,
     width: 414,
     maxWidth: "50vh",
     facingMode: "environment",
@@ -54,21 +55,8 @@ const ScanScreen = () => {
   return (
     <div>
       <Navbar />
-
-      {/* <div style={{ position: "absolute", top: "400px" }}>
-        <canvas id="myCanvas" width={videoWidth} height={videoHeight} style={{ backgroundColor: "transparent" }} />
-      </div> */}
       <div className="center">
-        <Webcam
-          audio={false}
-          id="img"
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          height={400}
-          width={340}
-          screenshotQuality={1}
-          videoConstraints={videoConstraints}
-        />
+        <Webcam audio={false} id="img" ref={webcamRef} screenshotFormat="image/jpeg" screenshotQuality={1} videoConstraints={videoConstraints} />
       </div>
       <div className="center">
         <br />
@@ -76,6 +64,7 @@ const ScanScreen = () => {
           Detectar un objeto
         </Button>
       </div>
+      <Footer />
     </div>
   );
 };
