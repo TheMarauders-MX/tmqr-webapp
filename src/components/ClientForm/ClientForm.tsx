@@ -27,16 +27,12 @@ const ClientForm = () => {
   const [loading, setLoading] = useState(false);
   const [csrf, setCsrf] = useState("");
 
-  useEffect(() => {
-
-  });
-
   const onSubmitButton = useCallback(async (info: any) => {
     let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: new Boolean(info.already_user) });
     
     axios.get('http://localhost:8000/sanctum/csrf-cookie', {withCredentials : true}).then(response => {
       //console.log(response.config.headers["X-XSRF-TOKEN"]);
-      console.log(response);
+      //console.log(response);
       axios.post(`${process.env.REACT_APP_API_URL}/register`, data, { headers: { "Content-Type": "application/json"  } })
       .catch((error) => {
         console.log(error);
