@@ -5,6 +5,9 @@ import "./theme/styles.scss";
 import RegisterScreen from "@screens/Home/RegisterScreen";
 import ScanScreen from "@screens/Home/ScanScreen";
 import BeneficiosScreen from "@screens/Home/BeneficiosScreen";
+import ProductScreen from "@screens/Home/ProductScreen";
+
+import { sampleAreasJSON } from "@samples/AreaPromotionContent";
 
 function App() {
   const history = createBrowserHistory();
@@ -24,6 +27,11 @@ function App() {
         <Route exact path="/beneficios">
           <BeneficiosScreen />
         </Route>
+        {sampleAreasJSON.map((item: any, i: any) => (
+          <Route exact path={`/${item.name}`}>
+            <ProductScreen name={item.name} />
+          </Route>
+        ))}
       </Switch>
     </Router>
   );

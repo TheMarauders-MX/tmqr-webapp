@@ -1,6 +1,7 @@
 import { ProductContent } from "@models/product.model";
 
-export const productSampleContent : ProductContent = {
+export const productSampleContent : ProductContent = 
+  {
     id: 1,
     name: "Pantalla Sony Smart TV de 85 Pulgadas 4K UHD XBR-85X800H",
     price: 48213,
@@ -13,6 +14,5 @@ export const productSampleContent : ProductContent = {
       url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_2p.jpg"
     }, {
       url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_3p.jpg"
-    }]
-  }
-}
+    }],
+  };

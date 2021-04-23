@@ -1,7 +1,6 @@
 export interface AreaPromotionContent{
-    key: number;
+    id: number;
+    name: string;
     image: string;
-    altImg: string;
     discount: number;
-    area: string;
 }

@@ -6,6 +6,7 @@ import HelpIcon from "@material-ui/icons/Help";
 import NoteIcon from "@material-ui/icons/Note";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useHistory, useLocation } from "react-router-dom";
+import { sampleAreasJSON } from "@samples/AreaPromotionContent";
 import "./styles.scss";
 import React from "react";
 
@@ -78,10 +79,10 @@ const Sidebar = (props: SidebarProps) => {
           </ListItem>
           <Divider />
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {["Zapatería", "Videojuegos", "Computación"].map((text, index) => (
-              <ListItem button key={index} onClick={() => redirect(`/${text}`)}>
+            {sampleAreasJSON.map((item, index) => (
+              <ListItem button key={item.id} onClick={() => redirect(`/${item.name}`)}>
                 <ListItemIcon></ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={item.name} />
               </ListItem>
             ))}
           </Collapse>
