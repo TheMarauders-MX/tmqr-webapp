@@ -10,6 +10,7 @@ const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
   //const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [model, setModel] = useState<any>(null);
+  const [disableBtn, setDisableBtn] = useState<any>(true);
 
   const videoConstraints = {
     height: 400,
@@ -18,23 +19,22 @@ const ScanScreen = () => {
     facingMode: "environment",
   };
 
-  async function loadModel() {
+  const loadModel = React.useCallback(async () => {
     try {
       const model = await cocoSsd.load();
-      //console.log(model);
       setModel(model);
-      console.log("setloadedModel");
+      setDisableBtn(false);
     } catch (err) {
       console.log(err);
       console.log("failed load model");
     }
-  }
+  }, []);
 
   useEffect(() => {
     tf.ready().then(() => {
       loadModel();
     });
-  }, []);
+  }, [loadModel]);
 
   const capture = React.useCallback(async () => {
     if (webcamRef.current) {
@@ -46,7 +46,7 @@ const ScanScreen = () => {
       //const predictions = await model.detect(imgSrc);
       console.log(predictions);
     }
-  }, [webcamRef]);
+  }, [webcamRef, model]);
 
   return (
     <div>
@@ -65,7 +65,7 @@ const ScanScreen = () => {
       </div>
       <div className="center">
         <br />
-        <Button variant={"contained"} onClick={capture}>
+        <Button variant={"contained"} onClick={capture} disabled={disableBtn}>
           Detectar un objeto
         </Button>
       </div>

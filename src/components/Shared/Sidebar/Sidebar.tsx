@@ -4,7 +4,7 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ScannerIcon from "@material-ui/icons/Scanner";
 import HelpIcon from "@material-ui/icons/Help";
 import NoteIcon from "@material-ui/icons/Note";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./styles.scss";
 import React from "react";
 
@@ -15,6 +15,7 @@ interface SidebarProps {
 
 const Sidebar = (props: SidebarProps) => {
   const history = useHistory();
+  const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandMenu = () => {
@@ -22,20 +23,24 @@ const Sidebar = (props: SidebarProps) => {
   };
 
   function redirect(href: string) {
-    history.push(href);
+    if (href === location.pathname) {
+      props.onClose();
+    } else {
+      history.push(href);
+    }
   }
 
   return (
     <div>
       <Drawer variant="temporary" anchor="left" open={props.isOpen} ModalProps={{ onBackdropClick: props.onClose }}>
         <div className="header">
-          <h6>
+          <h6 onClick={() => redirect("/")}>
             <b>Todo el mundo en un QR</b>
           </h6>
         </div>
         <Divider />
         <List>
-          <ListItem button key={"Inicio"} onClick={props.onClose}>
+          <ListItem button key={"Inicio"} onClick={() => redirect("/home")}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
