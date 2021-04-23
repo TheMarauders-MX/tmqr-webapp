@@ -30,8 +30,8 @@ const ClientForm = () => {
   const onSubmitButton = useCallback(
     async (info: any) => {
       setLoading(true);
-      // let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: Boolean(info.already_user) });
-      let data = JSON.stringify({ phone: "1234567890", email: "ivan@hotmail.com", already_user: Boolean("false") });
+      // let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: info.already_user == 'true' });
+      let data = JSON.stringify({ phone: "1234567890", email: "ivan@hotmail.com", already_user: false });
       axios
         .get("http://tmqr-coreapi.test/sanctum/csrf-cookie", { withCredentials: true })
         .then((response) => {
@@ -88,11 +88,11 @@ const ClientForm = () => {
                   <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
                   <ul className="input-ul">
                     <li>
-                      <Field type="radio" name="already_user" value={true} />
+                      <Field type="radio" name="already_user" value={"true"} />
                       <label htmlFor="si">Sí</label>
                     </li>
                     <li>
-                      <Field type="radio" name="already_user" value={false} />
+                      <Field type="radio" name="already_user" value={"false"} />
                       <label htmlFor="no">No</label>
                     </li>
                   </ul>
