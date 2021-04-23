@@ -4,6 +4,7 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ScannerIcon from "@material-ui/icons/Scanner";
 import HelpIcon from "@material-ui/icons/Help";
 import NoteIcon from "@material-ui/icons/Note";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useHistory, useLocation } from "react-router-dom";
 import "./styles.scss";
 import React from "react";
@@ -30,6 +31,10 @@ const Sidebar = (props: SidebarProps) => {
     }
   }
 
+  function redirectToAyuda() {
+    window.location.href = "https://assetspwa.liverpool.com.mx/ayuda/m/index.html";
+  }
+
   return (
     <div>
       <Drawer variant="temporary" anchor="left" open={props.isOpen} ModalProps={{ onBackdropClick: props.onClose }}>
@@ -51,6 +56,12 @@ const Sidebar = (props: SidebarProps) => {
               <CreditCardIcon />
             </ListItemIcon>
             <ListItemText primary={"Tarjeta Liverpool"} />
+          </ListItem>
+          <ListItem button key={"Registro"} onClick={() => redirect("/")}>
+            <ListItemIcon>
+              <PersonAddIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Registro"} />
           </ListItem>
           <ListItem button key={"Escanea"} onClick={() => redirect("/scan")}>
             <ListItemIcon>
@@ -74,7 +85,7 @@ const Sidebar = (props: SidebarProps) => {
               </ListItem>
             ))}
           </Collapse>
-          <ListItem button key={"Ayuda"} onClick={() => redirect("/ayuda")}>
+          <ListItem button key={"Ayuda"} onClick={redirectToAyuda}>
             <ListItemIcon>
               <HelpIcon />
             </ListItemIcon>

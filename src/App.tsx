@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import "./theme/styles.scss";
 import RegisterScreen from "@screens/Home/RegisterScreen";
 import ScanScreen from "@screens/Home/ScanScreen";
+import BeneficiosScreen from "@screens/Home/BeneficiosScreen";
 
 function App() {
   const history = createBrowserHistory();
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/scan">
           <ScanScreen />
+        </Route>
+        <Route exact path="/beneficios">
+          <BeneficiosScreen />
         </Route>
       </Switch>
     </Router>
