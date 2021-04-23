@@ -1,5 +1,4 @@
-import React from "react";
-import { Grid, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { useField } from "formik";
 
 interface FormikInputTextProps {
@@ -10,7 +9,7 @@ interface FormikInputTextProps {
 }
 
 const FormikInput = (props: FormikInputTextProps) => {
-  const [field, meta /*, helpers */] = useField(props.name);
+  const [field /*, meta , helpers */] = useField(props.name);
 
   return (
     <div className="formik-input-text">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CarouselComponent from "../../components/CarouselComponent/CarouselComponent";
 import ClientForm from "../../components/ClientForm/ClientForm";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Tour from "reactour";
@@ -14,8 +15,8 @@ const RegisterScreen = () => {
   return (
     <>
       <Navbar />
+      <CarouselComponent />
       <ClientForm />
-
       {/* React Tour */}
       <Tour steps={steps} isOpen={isTourOpen} onRequestClose={() => setIsTourOpen(false)} />
     </>
