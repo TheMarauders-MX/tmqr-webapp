@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Grid, Button, FormLabel } from "@material-ui/core";
 import FormikInput from "../../components/FormikElements/FormikInput";
-import axios from "axios";
+import apiClient from "@services/apiClient";
 
 import "./styles.scss";
 import { useHistory } from "react-router-dom";
@@ -25,35 +25,28 @@ const ClientForm = () => {
   // const [success, setSuccess] = useState(0);
   // const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [csrf, setCsrf] = useState("");
+
+  useEffect(() => {
+    apiClient.get("/sanctum/csrf-cookie").then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   const onSubmitButton = useCallback(
     async (info: any) => {
       setLoading(true);
-      // let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: info.already_user == 'true' });
-      let data = JSON.stringify({ phone: "1234567890", email: "ivan@hotmail.com", already_user: false });
-      axios
-        .get("http://api.liv.aperson.codes/sanctum/csrf-cookie", { withCredentials: true })
-        .then((response) => {
-          // console.log(response);
-          // console.log(response.config.headers["XSRF-TOKEN"]);
-          //setCsrf(response.config.headers["X-XSRF-TOKEN"]);
-          //console.log(csrf);
-          //console.log(response);
-          axios
-            .post(`${process.env.REACT_APP_API_URL}/register`, data, {
-              headers: { "Content-Type": "application/json", "X-XSRF-TOKEN": document.cookie.split("=")[1] },
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-            .then((response) => {
-              console.log(response);
-              // history.push("/home");
-            });
+      apiClient
+        .post("/register", {
+          phone: info.phone,
+          email: info.email,
+          already_user: info.already_user == "true",
         })
         .catch((error) => {
           console.log(error);
+        })
+        .then((response) => {
+          console.log(response);
+          // history.push("/home");
         });
     },
     [history]
