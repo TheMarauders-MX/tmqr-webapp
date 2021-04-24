@@ -1,16 +1,16 @@
+import AreaComponent from "@components/AreaComponent/AreaComponent";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 
 interface AreaScreenProps {
-  name: string;
+  // areaInfo: AreaContent;
+  areaInfo: any;
 }
 
 const AreaScreen = (props: AreaScreenProps) => {
   return (
     <div>
       <Navbar />
-      <div className="center">
-        <h1>{props.name}</h1>
-      </div>
+      <AreaComponent areaInfo={props.areaInfo} />
     </div>
   );
 };

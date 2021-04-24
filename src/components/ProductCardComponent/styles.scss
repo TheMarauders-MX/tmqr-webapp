@@ -1,0 +1,17 @@
+@import "@theme/variables", "@theme/colors";
+
+.product__card {
+  button {
+    background-color: $color-primary !important;
+  }
+  img {
+    width: 100%;
+  }
+  p {
+    font-size: $font-size-label !important;
+  }
+  .content {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+}
