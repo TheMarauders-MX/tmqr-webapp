@@ -33,7 +33,7 @@ const ClientForm = () => {
       // let data = JSON.stringify({ phone: info.phone, email: info.email, already_user: info.already_user == 'true' });
       let data = JSON.stringify({ phone: "1234567890", email: "ivan@hotmail.com", already_user: false });
       axios
-        .get("http://tmqr-coreapi.test/sanctum/csrf-cookie", { withCredentials: true })
+        .get("http://api.liv.aperson.codes/sanctum/csrf-cookie", { withCredentials: true })
         .then((response) => {
           // console.log(response);
           // console.log(response.config.headers["XSRF-TOKEN"]);

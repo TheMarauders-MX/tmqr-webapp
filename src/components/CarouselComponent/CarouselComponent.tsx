@@ -10,12 +10,18 @@ const CarouselComponent = () => {
       img: "images/everybody.png",
       alt: "Todos en un solo qr",
     },
-    // {
-    //   name: "Random Name #2",
-    //   description: "Hello World!",
-    //   img: "images/everybody.png",
-    //   alt: "Todos en un solo qr",
-    // },
+    {
+      name: "Random Name #2",
+      description: "Hello World!",
+      img: "images/liverpool_mkt.png",
+      alt: "Obtén tu tarjeta desde casa.",
+    },
+    {
+      name: "Random Name #2",
+      description: "Hello World!",
+      img: "images/beneficios.png",
+      alt: "Obtén tu tarjeta desde casa.",
+    },
   ];
 
   return (
