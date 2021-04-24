@@ -14,11 +14,11 @@ const initialValues = {
   already_user: "",
 };
 
-// const ClientFormSchema = Yup.object().shape({
-//   phone: Yup.string().required("Este campo es obligatorio").max(10, "El nombre ingresado no puede exceder 10 caracteres"),
-//   email: Yup.string().required("Este campo es obligatorio").email("El correo electrónico no es válido"),
-//   already_user: Yup.string().required("Este campo es obligatorio"),
-// });
+const ClientFormSchema = Yup.object().shape({
+  phone: Yup.string().required("Este campo es obligatorio").max(10, "El nombre ingresado no puede exceder 10 caracteres"),
+  email: Yup.string().required("Este campo es obligatorio").email("El correo electrónico no es válido"),
+  already_user: Yup.string().required("Este campo es obligatorio"),
+});
 
 const ClientForm = () => {
   const history = useHistory();
@@ -45,8 +45,8 @@ const ClientForm = () => {
           console.log(error);
         })
         .then((response) => {
-          console.log(response);
-          // history.push("/home");
+          //console.log(response);
+          history.push("/home");
         });
     },
     [history]
@@ -58,12 +58,7 @@ const ClientForm = () => {
         <h2>Regístrate.</h2>
         <h5>Conoce todas nuestras promociones.</h5>
       </div>
-      <Formik
-        initialValues={initialValues}
-        // validationSchema={ClientFormSchema}
-        onSubmit={onSubmitButton}
-        validator={() => ({})}
-      >
+      <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
         {(formik) => {
           return (
             <Form>
