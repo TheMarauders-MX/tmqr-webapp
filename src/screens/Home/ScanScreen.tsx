@@ -5,12 +5,14 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import Navbar from "@components/Shared/Navbar/Navbar";
 import { Button } from "@material-ui/core";
+import CustomModal from "@components/Shared/CustomModal/CustomModal";
 
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
   //const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [model, setModel] = useState<any>(null);
   const [disableBtn, setDisableBtn] = useState<any>(true);
+  const [predictionResult, setPredictionResult] = useState<any>(null);
 
   const videoConstraints = {
     height: 400,
@@ -39,14 +41,23 @@ const ScanScreen = () => {
   const capture = React.useCallback(async () => {
     if (webcamRef.current) {
       const predictions = await model.detect(document.getElementById("img"));
-      //let imgSrc: string = (document.getElementById("img") as HTMLInputElement).value;
-      //const imgSrc = webcamRef.current.getScreenshot();
-      //console.log(imgSrc);
-      //console.log(model);
-      //const predictions = await model.detect(imgSrc);
-      console.log(predictions);
+      if (predictions) {
+        console.log(predictions[0].class);
+        setPredictionResult(predictions[0].class);
+        handleOpen();
+      }
     }
   }, [webcamRef, model]);
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -69,6 +80,12 @@ const ScanScreen = () => {
           Detectar un objeto
         </Button>
       </div>
+      <CustomModal
+        handleClose={handleClose}
+        open={open}
+        header={"¡Éxito!"}
+        paragraph={predictionResult ? `Hemos reconocido un objeto: ${predictionResult}` : ""}
+      />
     </div>
   );
 };
