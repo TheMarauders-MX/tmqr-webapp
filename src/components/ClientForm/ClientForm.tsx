@@ -7,6 +7,7 @@ import apiClient from "@services/apiClient";
 
 import "./styles.scss";
 import { useHistory } from "react-router-dom";
+import CustomModal from "@components/Shared/CustomModal/CustomModal";
 
 const initialValues = {
   phone: "",
@@ -46,56 +47,77 @@ const ClientForm = () => {
         })
         .then((response) => {
           //console.log(response);
-          history.push("/home");
+          handleOpen();
         });
     },
     [history]
   );
 
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    history.push("/home");
+  };
+
   return (
-    <div className="client-form">
-      <div className="center header">
-        <h2>Regístrate.</h2>
-        <h5>Conoce todas nuestras promociones.</h5>
+    <>
+      <div className="client-form">
+        <div className="center header">
+          <h2>Regístrate.</h2>
+          <h5>Conoce todas nuestras promociones.</h5>
+        </div>
+        <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
+          {(formik) => {
+            return (
+              <Form>
+                {/* MAIN FORM */}
+                <Grid container className="main-form-container" spacing={3}>
+                  <Grid item xs={12}>
+                    <FormLabel component="legend">Ingresa tu teléfono (10 digitos): </FormLabel>
+                    <FormikInput name="phone" placeholder="ej. 55 2833 3845" validateOnClick={true} disabled={loading} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormLabel component="legend">Ingresa tu email: </FormLabel>
+                    <FormikInput name="email" placeholder="ej. bolo@liverpool.mx" validateOnClick={true} disabled={loading} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
+                    <ul className="input-ul">
+                      <li>
+                        <Field type="radio" name="already_user" value={"true"} />
+                        <label htmlFor="si">Sí</label>
+                      </li>
+                      <li>
+                        <Field type="radio" name="already_user" value={"false"} />
+                        <label htmlFor="no">No</label>
+                      </li>
+                    </ul>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button type="submit" variant="contained" color="primary" disabled={loading} data-tut="second__step">
+                      Registrar mis datos
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Form>
+            );
+          }}
+        </Formik>
       </div>
-      <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
-        {(formik) => {
-          return (
-            <Form>
-              {/* MAIN FORM */}
-              <Grid container className="main-form-container" spacing={3}>
-                <Grid item xs={12}>
-                  <FormLabel component="legend">Ingresa tu teléfono (10 digitos): </FormLabel>
-                  <FormikInput name="phone" placeholder="ej. 55 2833 3845" validateOnClick={true} disabled={loading} />
-                </Grid>
-                <Grid item xs={12}>
-                  <FormLabel component="legend">Ingresa tu email: </FormLabel>
-                  <FormikInput name="email" placeholder="ej. bolo@liverpool.mx" validateOnClick={true} disabled={loading} />
-                </Grid>
-                <Grid item xs={12}>
-                  <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
-                  <ul className="input-ul">
-                    <li>
-                      <Field type="radio" name="already_user" value={"true"} />
-                      <label htmlFor="si">Sí</label>
-                    </li>
-                    <li>
-                      <Field type="radio" name="already_user" value={"false"} />
-                      <label htmlFor="no">No</label>
-                    </li>
-                  </ul>
-                </Grid>
-                <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary" disabled={loading} data-tut="second__step">
-                    Registrar mis datos
-                  </Button>
-                </Grid>
-              </Grid>
-            </Form>
-          );
-        }}
-      </Formik>
-    </div>
+      <CustomModal
+        handleClose={handleClose}
+        open={open}
+        header={"¡Éxito!"}
+        paragraph={"Hemos registrado tus datos con éxito."}
+        paragraph2={"¿Estás listo para ver las mejores promociones?"}
+        buttonCopie={"¡Llévame!"}
+      />
+    </>
   );
 };
 

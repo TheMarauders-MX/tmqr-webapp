@@ -7,6 +7,8 @@ import "./styles.scss";
 interface CustomModalProps {
   header: string;
   paragraph: string;
+  paragraph2?: string;
+  buttonCopie?: string;
   handleClose: any;
   open: any;
 }
@@ -41,8 +43,9 @@ const CustomModal = (props: CustomModalProps) => {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">{props.header}</h2> <br />
             <p id="transition-modal-description">{props.paragraph}</p>
+            <p id="transition-modal-description">{props.paragraph2}</p>
             <div className="button_section">
-              <Button onClick={props.handleClose}>De acuerdo</Button>
+              <Button onClick={props.handleClose}>{props.buttonCopie}</Button>
             </div>
           </div>
         </Fade>
