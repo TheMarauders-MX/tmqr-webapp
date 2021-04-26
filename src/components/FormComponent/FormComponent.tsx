@@ -11,9 +11,9 @@ function FormComponent() {
         <h5>Conoce todas nuestras promociones.</h5>
       </div>
       <img src={"/images/form.png"} />
-      <ClientForm />
+      {/* <ClientForm /> */}
       {/* TODO: Agregar información */}
-      {/* <SuccesfulCard /> */}
+      <SuccesfulCard />
     </div>
   );
 }

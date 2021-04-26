@@ -1,11 +1,14 @@
+import { Paper } from "@material-ui/core";
 import "./styles.scss";
 
 const SuccesfulCard = () => {
   return (
     <>
-      <div className="center">
-        <img src={"images/happy.jpg"} />
-        <h2>Tu registro ha sido éxitoso</h2>
+      <div className="succesful__card center">
+        <Paper elevation={3}>
+          <h5>Tu registro ha sido éxitoso</h5>
+          <img src={"images/happy.jpg"} alt="Registro exitoso" />
+        </Paper>
       </div>
     </>
   );
