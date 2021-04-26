@@ -1,21 +1,20 @@
 @import "@theme/variables", "@theme/colors";
 
 .client-form {
-  .header {
-    padding: $spacing 0 $spacing 0;
-  }
+  margin-top: $spacing;
   .main-form-container {
     margin: 0 auto;
     text-align: center;
   }
-  h2 {
-    color: $color-secondary;
+  .formik-input-text {
+    position: relative;
+    min-height: 65px;
+    .MuiFormControl-root {
+      width: 90%;
+    }
   }
-  h5 {
-    color: $color-gray;
-  }
-  legend {
-    font-size: $font-size-h5 !important;
+  .MuiOutlinedInput-input {
+    height: 50px;
   }
 
   .input-ul {
@@ -60,5 +59,9 @@
       cursor: pointer;
       z-index: 90;
     }
+  }
+
+  .button__section {
+    margin-top: $spacing;
   }
 }

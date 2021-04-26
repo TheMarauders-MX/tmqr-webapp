@@ -42,8 +42,8 @@ const CustomModal = (props: CustomModalProps) => {
         <Fade in={props.open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">{props.header}</h2> <br />
-            <p id="transition-modal-description">{props.paragraph}</p>
-            <p id="transition-modal-description">{props.paragraph2}</p>
+            <h6 id="transition-modal-description">{props.paragraph}</h6>
+            <h6 id="transition-modal-description">{props.paragraph2}</h6>
             <div className="button_section">
               <Button onClick={props.handleClose}>{props.buttonCopie}</Button>
             </div>

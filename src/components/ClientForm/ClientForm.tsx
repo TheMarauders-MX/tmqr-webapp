@@ -31,6 +31,7 @@ const ClientForm = () => {
     apiClient.get("/sanctum/csrf-cookie").then((response) => {
       console.log(response);
     });
+    //handleOpen();
   }, []);
 
   const onSubmitButton = useCallback(
@@ -67,10 +68,6 @@ const ClientForm = () => {
   return (
     <>
       <div className="client-form">
-        <div className="center header">
-          <h2>Regístrate.</h2>
-          <h5>Conoce todas nuestras promociones.</h5>
-        </div>
         <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
           {(formik) => {
             return (
@@ -78,15 +75,15 @@ const ClientForm = () => {
                 {/* MAIN FORM */}
                 <Grid container className="main-form-container" spacing={3}>
                   <Grid item xs={12}>
-                    <FormLabel component="legend">Ingresa tu teléfono (10 digitos): </FormLabel>
-                    <FormikInput name="phone" placeholder="ej. 55 2833 3845" validateOnClick={true} disabled={loading} />
+                    {/* <FormLabel component="legend">Ingresa tu teléfono (10 digitos): </FormLabel> */}
+                    <FormikInput name="phone" placeholder="Ingresa tu número telefónico" validateOnClick={true} disabled={loading} />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormLabel component="legend">Ingresa tu email: </FormLabel>
-                    <FormikInput name="email" placeholder="ej. bolo@liverpool.mx" validateOnClick={true} disabled={loading} />
+                    {/* <FormLabel component="legend">Ingresa tu email: </FormLabel> */}
+                    <FormikInput name="email" placeholder="Ingresa tu correo electrónico" validateOnClick={true} disabled={loading} />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormLabel component="legend">¿Cuentas con tarjeta de Liverpool?</FormLabel>
+                    <FormLabel component="legend">¿Cuentas con tarjeta Liverpool?</FormLabel>
                     <ul className="input-ul">
                       <li>
                         <Field type="radio" name="already_user" value={"true"} />
@@ -98,7 +95,7 @@ const ClientForm = () => {
                       </li>
                     </ul>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} className="button__section">
                     <Button type="submit" variant="contained" color="primary" disabled={loading} data-tut="second__step">
                       Registrar mis datos
                     </Button>

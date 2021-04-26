@@ -1,0 +1,22 @@
+@import "@theme/variables", "@theme/colors";
+.form__component {
+  .header {
+    padding: $spacing 0 $spacing 0;
+  }
+
+  h2 {
+    color: $color-secondary;
+  }
+  h5 {
+    color: $color-gray;
+  }
+  legend {
+    font-size: $font-size-h5 !important;
+  }
+  img {
+    width: 100%;
+  }
+  .MuiGrid-spacing-xs-3 > .MuiGrid-item {
+    padding: 0 !important;
+  }
+}
