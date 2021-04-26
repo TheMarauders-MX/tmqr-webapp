@@ -8,6 +8,8 @@ import apiClient from "@services/apiClient";
 import "./styles.scss";
 import { useHistory } from "react-router-dom";
 import CustomModal from "@components/Shared/CustomModal/CustomModal";
+import { useDispatch } from "react-redux";
+import { setUserInfoSuccess } from "@store/User/info/info.action";
 
 const initialValues = {
   phone: "",
@@ -23,13 +25,15 @@ const ClientFormSchema = Yup.object().shape({
 
 const ClientForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   // const [success, setSuccess] = useState(0);
   // const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     apiClient.get("/sanctum/csrf-cookie").then((response) => {
-      console.log(response);
+      // console.log(response);
     });
     //handleOpen();
   }, []);
@@ -48,6 +52,7 @@ const ClientForm = () => {
         })
         .then((response) => {
           //console.log(response);
+          dispatch(setUserInfoSuccess({ phone: info.phone, email: info.email, already_user: info.already_user == "true" }));
           handleOpen();
         });
     },

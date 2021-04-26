@@ -5,12 +5,16 @@ import AreaPromotionContainer from "@containers/AreaPromotionContainer/AreaPromo
 import Footer from "@components/Shared/Footer/Footer";
 import CallActionCard from "@components/Shared/CallActionCard/CallActionCard";
 import CarouselComponent from "../../components/CarouselComponent/CarouselComponent";
+import { RootState } from "../../store/reducers";
+import { useSelector } from "react-redux";
 
 interface HomeScreenProps {
   areasObject: any;
 }
 
 const HomeScreen = (props: HomeScreenProps) => {
+  const userData = useSelector((state: RootState) => state.User.Info.data);
+
   return (
     <>
       <Navbar />
