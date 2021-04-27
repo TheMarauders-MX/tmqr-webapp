@@ -16,19 +16,9 @@ const App = () => {
   // const [areasResponse, setAreasResponse] = useState(null);
 
   useEffect(() => {
-    callArea();
-  }, []);
-
-  const callArea = useCallback(async () => {
-    apiClient
-      .get("/api/area")
-      .then((response) => {
-        console.log(response.data);
-        // setAreasResponse(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    apiClient.get("/sanctum/csrf-cookie").then((response) => {
+      // console.log(response);
+    });
   }, []);
 
   const history = createBrowserHistory();

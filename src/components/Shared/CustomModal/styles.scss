@@ -7,5 +7,8 @@
   top: 41% !important;
   .button_section {
     padding-top: $spacing-2x;
+    button {
+      color: $color-primary !important;
+    }
   }
 }

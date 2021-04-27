@@ -10,6 +10,7 @@ interface CustomModalProps {
   paragraph2?: string;
   buttonCopie?: string;
   handleClose: any;
+  handleButton?: any;
   open: any;
 }
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,7 @@ const CustomModal = (props: CustomModalProps) => {
             <h6 id="transition-modal-description">{props.paragraph}</h6>
             <h6 id="transition-modal-description">{props.paragraph2}</h6>
             <div className="button_section">
-              <Button onClick={props.handleClose}>{props.buttonCopie}</Button>
+              <Button onClick={props.handleButton ? props.handleButton : props.handleClose}>{props.buttonCopie}</Button>
             </div>
           </div>
         </Fade>
