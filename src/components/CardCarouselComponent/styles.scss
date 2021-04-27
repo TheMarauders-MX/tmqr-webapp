@@ -1,0 +1,22 @@
+@import "@theme/variables", "@theme/colors";
+
+.container {
+  width: 94%;
+  margin-top: 8% !important;
+  margin-bottom: 8% !important;
+}
+
+.title-container {
+  text-align: center;
+}
+
+.text-container {
+  background-color: $color-background-gray;
+  padding: $spacing;
+  text-align: center;
+}
+
+.card-button {
+  margin-bottom: 10% !important;
+}
+
