@@ -6,7 +6,7 @@
   }
   img {
     margin: 0 auto;
-    width: 35%;
+    width: 40%;
   }
 }
 
@@ -17,4 +17,12 @@
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: $color-secondary !important;
+}
+
+@media only screen and (min-width: 1000px) {
+  .MuiToolbar-root {
+    img {
+      width: 23%;
+    }
+  }
 }

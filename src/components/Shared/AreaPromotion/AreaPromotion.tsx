@@ -5,13 +5,15 @@ import "./styles.scss";
 const AreaPromotion = (props: AreaPromotionContent) => {
   return (
     <>
-      <div className="area-promotion" key={props.key}>
+      <div className="area-promotion" key={props.id}>
         <Grid item xs={12}>
           <h4>
-            <b>{props.area} </b>
+            <b>{props.name} </b>
             Hasta un {props.discount}% de descuento
           </h4>
-          <img src={props.image} alt={props.altImg} />
+          <a href={`/${props.route}`}>
+            <img src={props.images[0].url} alt={props.name} />
+          </a>
         </Grid>
       </div>
     </>

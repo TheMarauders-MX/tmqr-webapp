@@ -1,0 +1,29 @@
+@import "@theme/variables", "@theme/colors";
+
+.product__detail {
+  margin-top: $spacing-2x;
+  button {
+    background-color: $color-primary !important;
+  }
+  img {
+    width: 100%;
+  }
+  .current_price {
+    color: red;
+  }
+  .old_price {
+    text-decoration: line-through;
+    color: $color-gray;
+    font-size: $font-size-p - 2px;
+  }
+  .name {
+    color: $color-gray;
+    height: 37px;
+    width: 180px;
+    overflow: hidden;
+  }
+  .content {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+}

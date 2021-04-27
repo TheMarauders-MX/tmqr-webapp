@@ -1,0 +1,14 @@
+@import "@theme/variables", "@theme/colors";
+
+.customModal {
+  z-index: 1300;
+  inset: 26px !important;
+  position: absolute !important;
+  top: 41% !important;
+  .button_section {
+    padding-top: $spacing-2x;
+    button {
+      color: $color-primary !important;
+    }
+  }
+}

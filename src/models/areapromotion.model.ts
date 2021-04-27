@@ -1,7 +1,29 @@
 export interface AreaPromotionContent{
-    key: number;
-    image: string;
-    altImg: string;
+    id: number;
+    name: string;
+    route: string;
+    images: images[];
     discount: number;
-    area: string;
+}
+
+export interface AreaContent{
+    department: string;
+    currentRoute: string;
+    items: ProductContent[];
+}
+
+export interface ProductContent{
+    id: number;
+    name: string;
+    oldPrice?: number;
+    currentPrice: number;
+    extraDiscount: number;
+    punctuation: number;
+    detail: string;
+    route: string;
+    images: images[];
+}
+
+export interface images {
+    url: string;
 }
