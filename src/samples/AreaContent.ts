@@ -13,7 +13,7 @@ export const areaSampleContent : AreaContent[] = [
                 oldPrice: 26499,
                 currentPrice: 23999,
                 extraDiscount: 15,
-                punctuation: 5,
+                punctuation: 3.5,
                 route: "computacion/1"
             },
             {
@@ -26,11 +26,26 @@ export const areaSampleContent : AreaContent[] = [
                 punctuation: 5,
                 route: "computacion/2"
             },
+            {
+                id: 3,
+                name: "Laptop MacOS",
+                detail: "",
+                images: [{url: "https://ss628.liverpool.com.mx/lg/1102024601.jpg"}],
+                currentPrice: 24898,
+                extraDiscount: 0,
+                punctuation: 2,
+                route: "computacion/2"
+            },
         ]
     },
     {
         department: "Zapatería",
         currentRoute: "zapateria",
+        items:[]
+    },
+    {
+        department: "Llantas",
+        currentRoute: "llantas",
         items:[]
     }
 ];

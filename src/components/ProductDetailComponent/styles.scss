@@ -1,6 +1,7 @@
 @import "@theme/variables", "@theme/colors";
 
-.product__card {
+.product__detail {
+  margin-top: $spacing-2x;
   button {
     background-color: $color-primary !important;
   }

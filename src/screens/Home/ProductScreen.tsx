@@ -1,3 +1,4 @@
+import ProductDetailComponent from "@components/ProductDetailComponent/ProductDetailComponent";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 
 interface ProductScreenProps {
@@ -9,9 +10,7 @@ const ProductScreen = (props: ProductScreenProps) => {
   return (
     <div>
       <Navbar />
-      <div className="center">
-        <h1>{props.productInfo.name}</h1>
-      </div>
+      <ProductDetailComponent info={props.productInfo} />
     </div>
   );
 };

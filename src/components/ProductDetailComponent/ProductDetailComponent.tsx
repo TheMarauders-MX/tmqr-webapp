@@ -6,24 +6,16 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
-
-import { useHistory } from "react-router-dom";
 import "./styles.scss";
 
-interface ProductCardComponentProps {
+interface ProductDetailComponentProps {
   info: any;
 }
 
-const ProductCardComponent = (props: ProductCardComponentProps) => {
-  const history = useHistory();
-
-  const viewDetailProduct = () => {
-    history.replace(`${props.info.route}`);
-  };
-
+const ProductDetailComponent = (props: ProductDetailComponentProps) => {
   return (
-    <>
-      <Card className="product__card">
+    <div>
+      <Card className="product__detail">
         <CardActionArea>
           <img src={props.info.images[0].url} alt={props.info.name} />
           <CardContent className="content">
@@ -33,16 +25,12 @@ const ProductCardComponent = (props: ProductCardComponentProps) => {
             <Box component="fieldset" mb={3} borderColor="transparent">
               <Rating name="simple-controlled" value={props.info.punctuation} />
             </Box>
+            <Box></Box>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary" onClick={viewDetailProduct}>
-            Ver producto
-          </Button>
-        </CardActions>
       </Card>
-    </>
+    </div>
   );
 };
 
-export default ProductCardComponent;
+export default ProductDetailComponent;

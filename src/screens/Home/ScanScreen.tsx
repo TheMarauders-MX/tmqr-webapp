@@ -7,6 +7,7 @@ import Navbar from "@components/Shared/Navbar/Navbar";
 import { Button } from "@material-ui/core";
 import CustomModal from "@components/Shared/CustomModal/CustomModal";
 import { productSampleContent } from "@samples/ProductContent";
+import { useHistory } from "react-router-dom";
 
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
@@ -15,6 +16,7 @@ const ScanScreen = () => {
   const [disableBtn, setDisableBtn] = useState<any>(true);
   const [predictionResult, setPredictionResult] = useState<any>(null);
   const [accuracyResult, setAccuracyResult] = useState<any>(null);
+  const history = useHistory();
 
   const videoConstraints = {
     height: 400,
@@ -52,9 +54,12 @@ const ScanScreen = () => {
     }
   }, [webcamRef, model]);
 
-  const viewProduct = () => {};
+  const viewProduct = () => {
+    //let productFound = getProductInfo();
+    history.replace(productSampleContent.route);
+  };
 
-  const getAllProducts = useCallback(async () => {
+  const getProductInfo = useCallback(async () => {
     // Caso 1: Obtener todos los productos.
     // Recorrer este arreglo hasta encontrar uno que haga match con el nombre.
     // Mandar un redirect a la ruta de ese objeto

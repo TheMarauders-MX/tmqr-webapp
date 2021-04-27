@@ -11,12 +11,12 @@ export const productSampleContent : ProductContent =
     punctuation: 5,
     route: "computacion/1",
     images: [{
-      url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_0p.jpg"
+      url: "https:ss629.liverpool.com.mx/1095455804_0p.jpg"
     }, {
-      url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_20p.jpg"
+      url: "https:ss629.liverpool.com.mx/1095455804_20p.jpg"
     }, {
-      url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_2p.jpg"
+      url: "https:ss629.liverpool.com.mx/1095455804_2p.jpg"
     }, {
-      url: "https:\/\/ss629.liverpool.com.mx\/xl\/1095455804_3p.jpg"
+      url: "https:ss629.liverpool.com.mx/1095455804_3p.jpg"
     }],
   };
