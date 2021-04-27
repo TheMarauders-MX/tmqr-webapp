@@ -6,6 +6,7 @@ import Webcam from "react-webcam";
 import Navbar from "@components/Shared/Navbar/Navbar";
 import { Button } from "@material-ui/core";
 import CustomModal from "@components/Shared/CustomModal/CustomModal";
+import { productSampleContent } from "@samples/ProductContent";
 
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);

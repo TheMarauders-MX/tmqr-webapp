@@ -1,7 +1,8 @@
 import Navbar from "../../components/Shared/Navbar/Navbar";
 
 interface ProductScreenProps {
-  name: string;
+  // name?: string;
+  productInfo: any;
 }
 
 const ProductScreen = (props: ProductScreenProps) => {
@@ -9,7 +10,7 @@ const ProductScreen = (props: ProductScreenProps) => {
     <div>
       <Navbar />
       <div className="center">
-        <h1>{props.name}</h1>
+        <h1>{props.productInfo.name}</h1>
       </div>
     </div>
   );

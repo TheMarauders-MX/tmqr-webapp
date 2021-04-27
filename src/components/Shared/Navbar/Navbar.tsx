@@ -24,7 +24,7 @@ const Navbar = () => {
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
             <MenuIcon />
           </IconButton>
-          <img src="images/logo.png" alt="Liverpool logo" />
+          <img src={"/images/logo.png"} alt="Liverpool logo" />
         </Toolbar>
       </AppBar>
       <Sidebar isOpen={open} onClose={handleDrawerClose} />

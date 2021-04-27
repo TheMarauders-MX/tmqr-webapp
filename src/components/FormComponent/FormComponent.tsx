@@ -8,7 +8,7 @@ function FormComponent() {
         <h2>Regístrate.</h2>
         <h5>Conoce todas nuestras promociones.</h5>
       </div>
-      <img src={"/images/form.png"} />
+      <img src={"/images/form.png"} alt="Formulario Liverpool" />
       <ClientForm />
     </div>
   );

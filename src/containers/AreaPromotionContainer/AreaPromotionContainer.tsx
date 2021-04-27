@@ -9,7 +9,7 @@ const AreaPromotionContainer = (props: AreaPromotionContainerProps) => {
   return (
     <>
       {props.data.map((item: any, i: any) => (
-        <AreaPromotion id={i} image={item.image} name={item.name} discount={item.discount} route={item.route} />
+        <AreaPromotion id={i} images={item.images} name={item.name} discount={item.discount} route={item.route} />
       ))}
     </>
   );

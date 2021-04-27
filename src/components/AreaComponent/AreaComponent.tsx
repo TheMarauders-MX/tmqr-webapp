@@ -4,22 +4,22 @@ import { Grid } from "@material-ui/core";
 interface AreaComponentProps {
   // areaInfo: AreaContent;
   areaInfo: any;
+  areaName: string;
 }
 
 const AreaComponent = (props: AreaComponentProps) => {
   return (
     <>
       <div className="center">
-        <h2>Sección {props.areaInfo ? props.areaInfo.name : "Computo"}</h2>
+        <h2>Sección {props.areaName}</h2>
       </div>
       <div className="products_section">
         <Grid container>
-          <Grid item xs={6}>
-            <ProductCardComponent />
-          </Grid>
-          <Grid item xs={6}>
-            <ProductCardComponent />
-          </Grid>
+          {props.areaInfo.map((item: any, i: any) => (
+            <Grid item xs={6} key={i}>
+              <ProductCardComponent info={item} />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </>

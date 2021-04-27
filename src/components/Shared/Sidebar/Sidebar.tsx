@@ -80,7 +80,7 @@ const Sidebar = (props: SidebarProps) => {
           <Divider />
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             {sampleAreasJSON.map((item, index) => (
-              <ListItem button key={item.id} onClick={() => redirect(`/${item.name}`)}>
+              <ListItem button key={item.id} onClick={() => redirect(`/${item.route}`)}>
                 <ListItemIcon></ListItemIcon>
                 <ListItemText primary={item.name} />
               </ListItem>

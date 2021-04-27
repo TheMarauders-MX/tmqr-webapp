@@ -38,24 +38,18 @@ const App = () => {
         <Route exact path="/beneficios">
           <BeneficiosScreen />
         </Route>
-        {/* {sampleAreasJSON.map((item: any, i: any) => (
-          <Route exact path={`/${item.name}`}>
-            {areaSampleContent.map((item2: any, i: any) => (
-              <AreaScreen areaInfo={item.name == item2.currentRoute ? } />
-            ))}
+        {areaSampleContent.map((item: any, i: any) => (
+          <Route exact path={`/${item.currentRoute}`} key={i}>
+            <AreaScreen areaInfo={item.items} departmentName={item.department} />
           </Route>
-        ))} */}
-        <Route exact path="/computo">
-          <AreaScreen areaInfo={null} />
-        </Route>
-        {/* {areaSampleContent.map((item: any, i: any) => (
-          <Route exact path={`/${item.name}/${item.id}`}>
-            <ProductScreen productInfo={item} />
-          </Route>
-        ))} */}
-        {/* <Route exact path="/computation/1">
-          <ProductScreen />
-        </Route> */}
+        ))}
+        {areaSampleContent.map((item: any, i: any) =>
+          item.items.map((item1: any, i1: any) => (
+            <Route exact path={`/${item1.route}`} key={i}>
+              <ProductScreen productInfo={item1} />
+            </Route>
+          ))
+        )}
       </Switch>
     </Router>
   );

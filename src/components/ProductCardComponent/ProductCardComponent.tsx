@@ -4,24 +4,34 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { useHistory } from "react-router-dom";
 import "./styles.scss";
 
-const ProductCardComponent = () => {
+interface ProductCardComponentProps {
+  info: any;
+}
+
+const ProductCardComponent = (props: ProductCardComponentProps) => {
+  const history = useHistory();
+
+  const viewDetailProduct = () => {
+    history.replace(`${props.info.route}`);
+  };
+
   return (
     <>
       <Card className="product__card">
         <CardActionArea>
-          <img src="https://ss628.liverpool.com.mx/lg/1098132739.jpg" />
+          <img src={props.info.images[0].url} alt={props.info.name} />
           {/* <CardMedia title="Contemplative Reptile" image="https://ss628.liverpool.com.mx/lg/1098132739.jpg" /> */}
           <CardContent className="content">
-            <p>Laptop Microsoft Surface 3 13.3 Pulgadas 8K UHD Intel HD Graphics 620 Intel Core i5 8 GB RAM 128 GB SSD</p>
-            <p>26499</p>
-            <p>26499</p>
+            <p>{props.info.name}</p>
+            <p>{props.info.oldPrice}</p>
+            <p>{props.info.currentPrice}</p>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={viewDetailProduct}>
             Ver producto
           </Button>
         </CardActions>

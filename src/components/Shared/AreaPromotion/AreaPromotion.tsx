@@ -12,7 +12,7 @@ const AreaPromotion = (props: AreaPromotionContent) => {
             Hasta un {props.discount}% de descuento
           </h4>
           <a href={`/${props.route}`}>
-            <img src={props.image} alt={props.name} />
+            <img src={props.images[0].url} alt={props.name} />
           </a>
         </Grid>
       </div>
