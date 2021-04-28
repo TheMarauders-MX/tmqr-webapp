@@ -34,7 +34,7 @@ export const areaSampleContent : AreaContent[] = [
                 currentPrice: 24898,
                 extraDiscount: 0,
                 punctuation: 2,
-                route: "computacion/2"
+                route: "computacion/3"
             },
         ]
     },

@@ -1,0 +1,8 @@
+@import "@theme/variables", "@theme/colors";
+
+.header {
+  margin: $spacing 0 $spacing;
+  * {
+    color: $color-secondary;
+  }
+}

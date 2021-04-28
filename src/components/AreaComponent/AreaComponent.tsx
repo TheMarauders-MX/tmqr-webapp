@@ -1,5 +1,6 @@
 import ProductCardComponent from "../ProductCardComponent/ProductCardComponent";
 import { Grid } from "@material-ui/core";
+import "./styles.scss";
 
 interface AreaComponentProps {
   // areaInfo: AreaContent;
@@ -10,8 +11,8 @@ interface AreaComponentProps {
 const AreaComponent = (props: AreaComponentProps) => {
   return (
     <>
-      <div className="center">
-        <h2>Sección {props.areaName}</h2>
+      <div className="header center">
+        <h2>{props.areaName}</h2>
       </div>
       <div className="products_section">
         <Grid container>

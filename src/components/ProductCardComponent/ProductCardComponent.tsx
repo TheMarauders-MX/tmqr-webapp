@@ -24,17 +24,16 @@ const ProductCardComponent = (props: ProductCardComponentProps) => {
   return (
     <>
       <Card className="product__card">
-        <CardActionArea>
-          <img src={props.info.images[0].url} alt={props.info.name} />
-          <CardContent className="content">
-            <p className="name">{props.info.name}</p>
-            <p className="old_price">{props.info.oldPrice ? `$${props.info.oldPrice.toLocaleString()}` : ""}</p>
-            <p className="current_price">${props.info.currentPrice.toLocaleString()}</p>
-            <Box component="fieldset" mb={3} borderColor="transparent">
-              <Rating name="simple-controlled" value={props.info.punctuation} />
-            </Box>
-          </CardContent>
-        </CardActionArea>
+        <img src={props.info.images[0].url} alt={props.info.name} />
+        <p className="name">{props.info.name}</p>
+        <p className="old_price">{props.info.oldPrice ? `$${props.info.oldPrice.toLocaleString()}` : ""}</p>
+        <p className="current_price">${props.info.currentPrice.toLocaleString()}</p>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Rating name="simple-controlled" value={props.info.punctuation} />
+        </Box>
+        {/* <CardActionArea>
+          <CardContent className="content"></CardContent>
+        </CardActionArea> */}
         <CardActions>
           <Button size="small" color="primary" onClick={viewDetailProduct}>
             Ver producto

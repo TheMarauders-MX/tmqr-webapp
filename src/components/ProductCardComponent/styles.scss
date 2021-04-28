@@ -1,8 +1,13 @@
 @import "@theme/variables", "@theme/colors";
 
 .product__card {
+  .MuiCard-root {
+    margin-top: $spacing/2 !important;
+    height: 300px;
+  }
   button {
     background-color: $color-primary !important;
+    padding: 12px 30px !important;
   }
   img {
     width: 100%;
