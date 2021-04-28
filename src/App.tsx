@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import apiClient from "@services/apiClient";
 import "./theme/styles.scss";
 import ProductScreen from "@screens/Home/ProductScreen";
+import CardRegisterScreen from '@screens/Home/CardRegisterScreen';
 
 const App = () => {
   // const [areasResponse, setAreasResponse] = useState(null);
@@ -31,6 +32,9 @@ const App = () => {
         </Route>
         <Route exact path="/home">
           <HomeScreen areasObject={sampleAreasJSON} />
+        </Route>
+        <Route exact path="/registercard">
+          <CardRegisterScreen />
         </Route>
         <Route exact path="/scan">
           <ScanScreen />
@@ -53,6 +57,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-};
+}
 
 export default App;
