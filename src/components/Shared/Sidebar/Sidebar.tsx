@@ -19,6 +19,11 @@ const Sidebar = (props: SidebarProps) => {
   const history = useHistory();
   const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const handleListItemClick = (event: any, index: any) => {
+    setSelectedIndex(index);
+  };
 
   const handleExpandMenu = () => {
     setExpanded(!expanded);
@@ -46,7 +51,7 @@ const Sidebar = (props: SidebarProps) => {
         </div>
         <Divider />
         <List>
-          <ListItem button key={"Inicio"} onClick={() => redirect("/home")}>
+          <ListItem button key={"Inicio"} onClick={() => redirect("/home")} selected={selectedIndex === 0}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>

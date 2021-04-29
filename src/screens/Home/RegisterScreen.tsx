@@ -8,7 +8,7 @@ const RegisterScreen = () => {
   const [isTourOpen, setIsTourOpen] = useState(false);
 
   // useEffect(() => {
-  //   //setIsTourOpen(true);
+  //   setIsTourOpen(true);
   // }, []);
 
   return (
