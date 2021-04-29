@@ -1,4 +1,4 @@
-# Todo Mundo en un QR
+# Todo el Mundo en un QR
 
 Para correr el proyecto deberás correr los siguientes comandos:
 
