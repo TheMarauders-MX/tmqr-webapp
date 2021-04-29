@@ -65,7 +65,7 @@ const ClientForm = () => {
 
   return (
     <>
-      {userData.email === "" ? (
+      {userData.email == "" ? (
         <div className="client-form">
           <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
             {(formik) => {

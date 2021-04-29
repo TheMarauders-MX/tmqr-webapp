@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
-import apiClient from "@services/apiClient";
+import React, { useRef, useState, useEffect } from "react";
+// import apiClient from "@services/apiClient";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
@@ -8,12 +8,14 @@ import { Button } from "@material-ui/core";
 import CustomModal from "@components/Shared/CustomModal/CustomModal";
 import { productSampleContent } from "@samples/ProductContent";
 import { useHistory } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ScanScreen = () => {
   const webcamRef = useRef<Webcam>(null);
   //const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [model, setModel] = useState<any>(null);
   const [disableBtn, setDisableBtn] = useState<any>(true);
+  const [loadingModel, setLoadingModel] = useState<any>(true);
   const [predictionResult, setPredictionResult] = useState<any>(null);
   const [accuracyResult, setAccuracyResult] = useState<any>(null);
   const history = useHistory();
@@ -29,6 +31,7 @@ const ScanScreen = () => {
     try {
       const model = await cocoSsd.load();
       setModel(model);
+      setLoadingModel(false);
       setDisableBtn(false);
     } catch (err) {
       console.log(err);
@@ -59,21 +62,21 @@ const ScanScreen = () => {
     history.replace(productSampleContent.route);
   };
 
-  const getProductInfo = useCallback(async () => {
-    // Caso 1: Obtener todos los productos.
-    // Recorrer este arreglo hasta encontrar uno que haga match con el nombre.
-    // Mandar un redirect a la ruta de ese objeto
-    // Caso 2: Llamar a un endpoint donde me de la info del producto que le pase.
-    // apiClient
-    //   .get("/api/product")
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     // setAreasResponse(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  }, []);
+  // const getProductInfo = useCallback(async () => {
+  // Caso 1: Obtener todos los productos.
+  // Recorrer este arreglo hasta encontrar uno que haga match con el nombre.
+  // Mandar un redirect a la ruta de ese objeto
+  // Caso 2: Llamar a un endpoint donde me de la info del producto que le pase.
+  // apiClient
+  //   .get("/api/product")
+  //   .then((response) => {
+  //     console.log(response.data);
+  //     // setAreasResponse(response.data);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, []);
 
   const [open, setOpen] = useState(false);
 
@@ -103,7 +106,13 @@ const ScanScreen = () => {
       <div className="center">
         <br />
         <Button variant={"contained"} onClick={capture} disabled={disableBtn}>
-          Detectar un objeto
+          {!loadingModel ? (
+            "Detectar un objeto"
+          ) : (
+            <>
+              <CircularProgress /> Porfavor espere
+            </>
+          )}
         </Button>
       </div>
       <CustomModal

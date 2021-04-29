@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Tour from "reactour";
 import { steps } from "../../components/TourSteps/TourSteps";

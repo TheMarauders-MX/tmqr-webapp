@@ -4,8 +4,8 @@ import AreaPromotionContainer from "@containers/AreaPromotionContainer/AreaPromo
 import Footer from "@components/Shared/Footer/Footer";
 import CallActionCard from "@components/Shared/CallActionCard/CallActionCard";
 import CarouselComponent from "../../components/CarouselComponent/CarouselComponent";
-import { RootState } from "../../store/reducers";
-import { useSelector } from "react-redux";
+// import { RootState } from "../../store/reducers";
+// import { useSelector } from "react-redux";
 import apiClient from "@services/apiClient";
 
 interface HomeScreenProps {
@@ -13,7 +13,8 @@ interface HomeScreenProps {
 }
 
 const HomeScreen = (props: HomeScreenProps) => {
-  const userData = useSelector((state: RootState) => state.User.Info.data);
+  // TODO: Pasar userData para saber qué componentes ocultar
+  // const userData = useSelector((state: RootState) => state.User.Info.data);
 
   const callArea = useCallback(async () => {
     apiClient
@@ -29,7 +30,7 @@ const HomeScreen = (props: HomeScreenProps) => {
 
   useEffect(() => {
     callArea();
-  }, []);
+  }, [callArea]);
 
   return (
     <>
