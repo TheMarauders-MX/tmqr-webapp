@@ -6,7 +6,6 @@ import Webcam from "react-webcam";
 import Navbar from "@components/Shared/Navbar/Navbar";
 import { Button } from "@material-ui/core";
 import CustomModal from "@components/Shared/CustomModal/CustomModal";
-import { productSampleContent } from "@samples/ProductContent";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -18,6 +17,7 @@ const ScanScreen = () => {
   const [loadingModel, setLoadingModel] = useState<any>(true);
   const [predictionResult, setPredictionResult] = useState<any>(null);
   const [accuracyResult, setAccuracyResult] = useState<any>(null);
+  const [productFoundRoute, setProductFoundRoute] = useState<any>(null);
   const history = useHistory();
 
   const videoConstraints = {
@@ -58,21 +58,23 @@ const ScanScreen = () => {
   }, [webcamRef, model]);
 
   const viewProduct = () => {
-    //let productFound = getProductInfo();
-    history.replace(productSampleContent.route);
+    getProductInfo();
+    if (productFoundRoute) history.replace(productFoundRoute);
   };
 
   const getProductInfo = useCallback(async () => {
-    // apiClient
-    //   .get("/api/product")
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     // setAreasResponse(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  }, []);
+    if (predictionResult) {
+      apiClient
+        .get(`api/find/${predictionResult}`)
+        .then((response) => {
+          console.log(response.data);
+          setProductFoundRoute(response.data.route);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [predictionResult]);
 
   const [open, setOpen] = useState(false);
 

@@ -1,6 +1,5 @@
-import "./styles.scss";
 import Tour from "reactour";
-import { useHistory } from "react-router-dom";
+import "./styles.scss";
 
 interface UserTourProps {
   isOpen: any;
@@ -9,13 +8,6 @@ interface UserTourProps {
 }
 
 export const UserTour = (props: UserTourProps) => {
-  const history = useHistory();
-
-  function redirectClose() {
-    history.push("/home");
-    props.closeTour();
-  }
-
   const steps: any = [
     {
       selector: '[data-tut="first__step"]',

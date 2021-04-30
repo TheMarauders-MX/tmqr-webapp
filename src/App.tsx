@@ -21,8 +21,6 @@ const App = () => {
       // console.log(response);
     });
     callArea();
-    console.log(areasResponse);
-    // areasResponse.data.map((item: any, i: any) => console.log(item.currentRoute));
   }, []);
 
   const callArea = useCallback(async () => {

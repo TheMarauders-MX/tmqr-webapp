@@ -7,7 +7,6 @@ import { RootState } from "@store/reducers";
 
 const RegisterScreen = () => {
   const [isTourOpen, setIsTourOpen] = useState(false);
-  const [stepStartAt, setStepStartAt] = useState(0);
   const userData = useSelector((state: RootState) => state.User.Info.data);
 
   const closeTour = () => {
@@ -20,14 +19,14 @@ const RegisterScreen = () => {
     } else {
       setIsTourOpen(false);
     }
-  }, []);
+  }, [userData.email]);
 
   return (
     <>
       <Navbar />
       <FormComponent />
       {/* React Tour */}
-      <UserTour isOpen={isTourOpen} closeTour={closeTour} stepStartAt={stepStartAt} />
+      <UserTour isOpen={isTourOpen} closeTour={closeTour} stepStartAt={0} />
     </>
   );
 };
