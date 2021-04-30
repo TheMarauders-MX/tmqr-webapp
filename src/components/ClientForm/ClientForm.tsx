@@ -42,7 +42,7 @@ const ClientForm = () => {
         .post("/register", {
           phone: info.phone,
           email: info.email,
-          already_user: info.already_user == "true",
+          already_user: info.already_user === "true",
         })
         .catch((error) => {
           console.log(error);
@@ -51,11 +51,11 @@ const ClientForm = () => {
           if (response) {
             setLoading(false);
             setOpen(true);
-            dispatch(setUserInfoSuccess({ phone: info.phone, email: info.email, already_user: info.already_user == "true" }));
+            dispatch(setUserInfoSuccess({ phone: info.phone, email: info.email, already_user: info.already_user === "true" }));
           }
         });
     },
-    [history]
+    [dispatch]
   );
 
   const handleClose = () => {
@@ -65,8 +65,8 @@ const ClientForm = () => {
 
   return (
     <>
-      {userData.email == "" ? (
-        <div className="client-form">
+      {userData.email === "" ? (
+        <div className="client-form" data-tut="second__step">
           <Formik initialValues={initialValues} validationSchema={ClientFormSchema} onSubmit={onSubmitButton} validator={() => ({})}>
             {(formik) => {
               return (
@@ -95,7 +95,7 @@ const ClientForm = () => {
                       </ul>
                     </Grid>
                     <Grid item xs={12} className="button__section">
-                      <Button type="submit" variant="contained" color="primary" disabled={loading} data-tut="second__step">
+                      <Button type="submit" variant="contained" color="primary" disabled={loading}>
                         Registrar mis datos
                       </Button>
                     </Grid>

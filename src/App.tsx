@@ -11,7 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import apiClient from "@services/apiClient";
 import "./theme/styles.scss";
 import ProductScreen from "@screens/Home/ProductScreen";
-import CardRegisterScreen from '@screens/Home/CardRegisterScreen';
+import CardRegisterScreen from "@screens/Home/CardRegisterScreen";
 
 const App = () => {
   // const [areasResponse, setAreasResponse] = useState(null);
@@ -20,9 +20,12 @@ const App = () => {
     apiClient.get("/sanctum/csrf-cookie").then((response) => {
       // console.log(response);
     });
+    // if (history.location.pathname === "/home") {
+    //   setStepStartAt(2);
+    // }
   }, []);
 
-  const history = createBrowserHistory();
+  const history = createBrowserHistory({ forceRefresh: true });
 
   return (
     <Router history={history}>
@@ -57,6 +60,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

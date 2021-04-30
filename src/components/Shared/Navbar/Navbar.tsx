@@ -22,7 +22,7 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
-            <MenuIcon />
+            <MenuIcon data-tut="third__step" />
           </IconButton>
           <img src={"/images/logo.png"} alt="Liverpool logo" />
         </Toolbar>

@@ -25,7 +25,7 @@ const Sidebar = (props: SidebarProps) => {
   };
 
   function redirect(href: string) {
-    if (href == location.pathname) {
+    if (href === location.pathname) {
       props.onClose();
     } else {
       history.push(href);
@@ -45,7 +45,7 @@ const Sidebar = (props: SidebarProps) => {
           </h6>
         </div>
         <Divider />
-        <List>
+        <List data-tut="fourth__step">
           <ListItem button key={"Inicio"} onClick={() => redirect("/home")}>
             <ListItemIcon>
               <HomeIcon />
