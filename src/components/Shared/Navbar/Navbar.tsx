@@ -5,9 +5,11 @@ import IconButton from "@material-ui/core/IconButton";
 
 import "./styles.scss";
 import Sidebar from "../Sidebar/Sidebar";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -17,6 +19,10 @@ const Navbar = () => {
     setOpen(false);
   };
 
+  const redirectHome = () => {
+    history.push("/home");
+  };
+
   return (
     <>
       <AppBar position="static">
@@ -24,7 +30,7 @@ const Navbar = () => {
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
             <MenuIcon data-tut="third__step" />
           </IconButton>
-          <img src={"/images/logo.png"} alt="Liverpool logo" />
+          <img src={"/images/logo.png"} alt="Liverpool logo" onClick={() => redirectHome()} />
         </Toolbar>
       </AppBar>
       <Sidebar isOpen={open} onClose={handleDrawerClose} />
