@@ -9,7 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import "./styles.scss";
 import React, { useCallback, useEffect, useState } from "react";
 import apiClient from "@services/apiClient";
-import { AreaPromotionContent } from "@models/areapromotion.model";
+import { AreaContent } from "@models/areapromotion.model";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -21,7 +21,7 @@ const Sidebar = (props: SidebarProps) => {
   const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
 
-  const [areasResponse, setAreasResponse] = useState<AreaPromotionContent[]>([]);
+  const [areasResponse, setAreasResponse] = useState<AreaContent[]>([]);
 
   const callArea = useCallback(async () => {
     apiClient
@@ -99,7 +99,7 @@ const Sidebar = (props: SidebarProps) => {
           {areasResponse ? (
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               {areasResponse.map((item, index) => (
-                <ListItem button key={index} onClick={() => redirect(`/${item.route}`)}>
+                <ListItem button key={index} onClick={() => redirect(`/${item.currentRoute}`)}>
                   <ListItemIcon></ListItemIcon>
                   <ListItemText primary={item.department} />
                 </ListItem>

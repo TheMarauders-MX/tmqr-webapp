@@ -24,15 +24,9 @@ const App = () => {
   }, []);
 
   const callArea = useCallback(async () => {
-    apiClient
-      .get("/api/area")
-      .then((response) => {
-        //console.log(response.data);
-        setAreasResponse(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    apiClient.get("/api/area").then((response) => {
+      setAreasResponse(response.data);
+    });
   }, []);
 
   const history = createBrowserHistory({ forceRefresh: true });
