@@ -8,11 +8,11 @@ const AreaPromotion = (props: AreaPromotionContent) => {
       <div className="area-promotion" key={props.id}>
         <Grid item xs={12}>
           <h4>
-            <b>{props.name} </b>
+            <b>{props.department} </b>
             Hasta un {props.discount}% de descuento
           </h4>
           <a href={`/${props.route}`}>
-            <img src={props.images[0].url} alt={props.name} />
+            <img src={props.image} alt={props.department} />
           </a>
         </Grid>
       </div>

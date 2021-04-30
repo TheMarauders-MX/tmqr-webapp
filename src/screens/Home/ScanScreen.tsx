@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-// import apiClient from "@services/apiClient";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import apiClient from "@services/apiClient";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
@@ -62,21 +62,17 @@ const ScanScreen = () => {
     history.replace(productSampleContent.route);
   };
 
-  // const getProductInfo = useCallback(async () => {
-  // Caso 1: Obtener todos los productos.
-  // Recorrer este arreglo hasta encontrar uno que haga match con el nombre.
-  // Mandar un redirect a la ruta de ese objeto
-  // Caso 2: Llamar a un endpoint donde me de la info del producto que le pase.
-  // apiClient
-  //   .get("/api/product")
-  //   .then((response) => {
-  //     console.log(response.data);
-  //     // setAreasResponse(response.data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, []);
+  const getProductInfo = useCallback(async () => {
+    // apiClient
+    //   .get("/api/product")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     // setAreasResponse(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  }, []);
 
   const [open, setOpen] = useState(false);
 

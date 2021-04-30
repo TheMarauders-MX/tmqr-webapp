@@ -1,6 +1,7 @@
 import { AreaContent } from "@models/areapromotion.model";
 
-export const areaSampleContent : AreaContent[] = [
+// export const areaSampleContent : AreaContent[] = [
+    export const areaSampleContent : any = [
     {
         department:"Computacion",
         currentRoute:"computacion",

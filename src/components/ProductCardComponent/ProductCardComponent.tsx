@@ -23,8 +23,8 @@ const ProductCardComponent = (props: ProductCardComponentProps) => {
       <Card className="product__card">
         <img src={props.info.images[0].url} alt={props.info.name} />
         <p className="name">{props.info.name}</p>
-        <p className="old_price">{props.info.oldPrice ? `$${props.info.oldPrice.toLocaleString()}` : ""}</p>
-        <p className="current_price">${props.info.currentPrice.toLocaleString()}</p>
+        <p className="old_price">{props.info.old_price ? `$${props.info.old_price.toLocaleString()}` : ""}</p>
+        <p className="current_price">${props.info.current_price.toLocaleString()}</p>
         <Box component="fieldset" mb={3} borderColor="transparent">
           <Rating name="simple-controlled" value={props.info.punctuation} />
         </Box>

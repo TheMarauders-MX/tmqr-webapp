@@ -6,9 +6,10 @@ import HelpIcon from "@material-ui/icons/Help";
 import NoteIcon from "@material-ui/icons/Note";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useHistory, useLocation } from "react-router-dom";
-import { sampleAreasJSON } from "@samples/AreaPromotionContent";
 import "./styles.scss";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import apiClient from "@services/apiClient";
+import { AreaPromotionContent } from "@models/areapromotion.model";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -19,6 +20,23 @@ const Sidebar = (props: SidebarProps) => {
   const history = useHistory();
   const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
+
+  const [areasResponse, setAreasResponse] = useState<AreaPromotionContent[]>([]);
+
+  const callArea = useCallback(async () => {
+    apiClient
+      .get("/api/area")
+      .then((response) => {
+        setAreasResponse(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    callArea();
+  }, [callArea]);
 
   const handleExpandMenu = () => {
     setExpanded(!expanded);
@@ -78,14 +96,19 @@ const Sidebar = (props: SidebarProps) => {
             <ListItemText primary={"Departamentos"} />
           </ListItem>
           <Divider />
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {sampleAreasJSON.map((item, index) => (
-              <ListItem button key={item.id} onClick={() => redirect(`/${item.route}`)}>
-                <ListItemIcon></ListItemIcon>
-                <ListItemText primary={item.name} />
-              </ListItem>
-            ))}
-          </Collapse>
+          {areasResponse ? (
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              {areasResponse.map((item, index) => (
+                <ListItem button key={index} onClick={() => redirect(`/${item.route}`)}>
+                  <ListItemIcon></ListItemIcon>
+                  <ListItemText primary={item.department} />
+                </ListItem>
+              ))}
+            </Collapse>
+          ) : (
+            ""
+          )}
+
           <ListItem button key={"Ayuda"} onClick={redirectToAyuda}>
             <ListItemIcon>
               <HelpIcon />

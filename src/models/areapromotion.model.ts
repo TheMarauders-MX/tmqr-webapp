@@ -1,14 +1,16 @@
 export interface AreaPromotionContent{
     id: number;
-    name: string;
+    department: string;
     route: string;
-    images: images[];
+    image: string;
     discount: number;
 }
 
 export interface AreaContent{
     department: string;
     currentRoute: string;
+    discount: number;
+    image: string;
     items: ProductContent[];
 }
 
